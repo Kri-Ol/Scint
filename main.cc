@@ -1,4 +1,4 @@
-#include "DetectorConstruction.hh"
+#include "detector.hh"
 #include "ActionInitialization.hh"
 
 #include "G4RunManagerFactory.hh"
@@ -32,7 +32,7 @@ func main(int argc,char* argv[]) -> int {
     // Set mandatory initialization classes
     //
     // Detector construction
-    runManager->SetUserInitialization(new DetectorConstruction());
+    runManager->SetUserInitialization(new detector());
 
     // Physics list
     auto physicsList = new QBBC;
