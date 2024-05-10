@@ -9,19 +9,12 @@ namespace B1
 {
 
 event::event(RunAction* runAction):
-    fRunAction(runAction)
-{
+    _run(runAction) {
 }
 
-void event::BeginOfEventAction(const G4Event*)
-{
-    fEdep = 0.0;
-}
-
-void event::EndOfEventAction(const G4Event*)
-{
+void event::EndOfEventAction(const G4Event*) {
     // accumulate statistics in run action
-    fRunAction->AddEdep(fEdep);
+    _run->AddEdep(_edep);
 }
 
 }

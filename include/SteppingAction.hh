@@ -14,16 +14,14 @@ class event;
 
 class SteppingAction : public G4UserSteppingAction
 {
-  public:
-    SteppingAction(event* eventAction);
-    ~SteppingAction() override = default;
+    public: SteppingAction(event* eventAction);
+    public: ~SteppingAction() override = default;
 
-    // method from the base class
-    void UserSteppingAction(const G4Step*) override;
+    public: void UserSteppingAction(const G4Step*) override;
 
-  private:
-    event* fEventAction = nullptr;
-    G4LogicalVolume* fScoringVolume = nullptr;
+    private: event* _event_action = nullptr;
+
+    private: G4LogicalVolume* _scoring_volume = nullptr;
 };
 
 }

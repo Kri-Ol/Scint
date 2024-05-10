@@ -12,30 +12,26 @@ namespace B1
 {
 
 SteppingAction::SteppingAction(event* eventAction):
-    fEventAction(eventAction)
-{}
+    _event_action(eventAction) {
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+}
 
-void SteppingAction::UserSteppingAction(const G4Step* step)
-{
-  if (!fScoringVolume) {
-    const auto detConstruction = static_cast<const detector*>(
-      G4RunManager::GetRunManager()->GetUserDetectorConstruction());
-    fScoringVolume = detConstruction->GetScoringVolume();
-  }
+void SteppingAction::UserSteppingAction(const G4Step* step) {
+    if (!_scoring_volume) { // 
+        const auto detConstruction = static_cast<const detector*>(G4RunManager::GetRunManager()->GetUserDetectorConstruction());
+        _scoring_volume = detConstruction->GetScoringVolume();
+    }
 
-  // get volume of the current step
-  G4LogicalVolume* volume
-    = step->GetPreStepPoint()->GetTouchableHandle()
-      ->GetVolume()->GetLogicalVolume();
+    // get volume of the current step
+    G4LogicalVolume* volume = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
 
-  // check if we are in scoring volume
-  if (volume != fScoringVolume) return;
+    // check if we are in scoring volume
+    if (volume != _scoring_volume)
+        return;
 
-  // collect energy deposited in this step
-  G4double edepStep = step->GetTotalEnergyDeposit();
-  fEventAction->AddEdep(edepStep);
+    // collect energy deposited in this step
+    double edepStep = step->GetTotalEnergyDeposit();
+    _event_action->AddEdep(edepStep);
 }
 
 }
