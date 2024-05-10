@@ -1,6 +1,6 @@
 
 #include "SteppingAction.hh"
-#include "EventAction.hh"
+#include "event.hh"
 #include "detector.hh"
 
 #include "G4Step.hh"
@@ -11,10 +11,8 @@
 namespace B1
 {
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-SteppingAction::SteppingAction(EventAction* eventAction)
-: fEventAction(eventAction)
+SteppingAction::SteppingAction(event* eventAction):
+    fEventAction(eventAction)
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -39,7 +37,5 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   G4double edepStep = step->GetTotalEnergyDeposit();
   fEventAction->AddEdep(edepStep);
 }
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 }

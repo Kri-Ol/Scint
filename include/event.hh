@@ -10,20 +10,22 @@ class RunAction;
 
 /// Event action class
 
-class EventAction : public G4UserEventAction
+class event: public G4UserEventAction
 {
   public:
-    EventAction(RunAction* runAction);
-    ~EventAction() override = default;
+    event(RunAction* runAction);
+    ~event() override = default;
 
     void BeginOfEventAction(const G4Event* event) override;
     void EndOfEventAction(const G4Event* event) override;
 
-    void AddEdep(G4double edep) { fEdep += edep; }
+    void AddEdep(const double edep) {
+      fEdep += edep;
+    }
 
   private:
-    RunAction* fRunAction = nullptr;
-    G4double   fEdep = 0.;
+      RunAction* fRunAction = nullptr;
+      double     fEdep      = 0.;
 };
 
 }
