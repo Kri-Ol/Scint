@@ -16,21 +16,21 @@ namespace B1
 /// The default kinematic is a 6 MeV gamma, randomly distribued
 /// in front of the phantom across 80% of the (X,Y) phantom size.
 
-class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
+class source : public G4VUserPrimaryGeneratorAction
 {
-  public:
-    PrimaryGeneratorAction();
-    ~PrimaryGeneratorAction() override;
+    public: source();
+    public: ~source() override;
 
     // method from the base class
-    void GeneratePrimaries(G4Event*) override;
+    public: void GeneratePrimaries(G4Event*) override;
 
     // method to access particle gun
-    const G4ParticleGun* GetParticleGun() const { return fParticleGun; }
+    const G4ParticleGun* GetParticleGun() const {
+        return _part_gun;
+    }
 
-  private:
-    G4ParticleGun* fParticleGun = nullptr; // pointer a to G4 gun class
-    G4Box* fEnvelopeBox = nullptr;
+    private: G4ParticleGun* _part_gun     = nullptr;
+    private: G4Box*         _envelope_box = nullptr;
 };
 
 }

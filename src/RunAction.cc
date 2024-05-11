@@ -1,5 +1,5 @@
 #include "RunAction.hh"
-#include "PrimaryGeneratorAction.hh"
+#include "source.hh"
 #include "detector.hh"
 
 #include "G4RunManager.hh"
@@ -12,8 +12,6 @@
 
 namespace B1
 {
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 RunAction::RunAction()
 {
@@ -76,8 +74,7 @@ void RunAction::EndOfRunAction(const G4Run* run)
   // Run conditions
   //  note: There is no primary generator action object for "master"
   //        run manager for multi-threaded mode.
-  const auto generatorAction = static_cast<const PrimaryGeneratorAction*>(
-    G4RunManager::GetRunManager()->GetUserPrimaryGeneratorAction());
+  const auto generatorAction = static_cast<const source*>(G4RunManager::GetRunManager()->GetUserPrimaryGeneratorAction());
   G4String runCondition;
   if (generatorAction)
   {

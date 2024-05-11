@@ -1,6 +1,6 @@
 
 #include "ActionInitialization.hh"
-#include "PrimaryGeneratorAction.hh"
+#include "source.hh"
 #include "RunAction.hh"
 #include "event.hh"
 #include "SteppingAction.hh"
@@ -16,7 +16,7 @@ void ActionInitialization::BuildForMaster() const
 
 void ActionInitialization::Build() const
 {
-    SetUserAction(new PrimaryGeneratorAction);
+    SetUserAction(new source);
 
     auto runAction = new RunAction;
     SetUserAction(runAction);

@@ -26,7 +26,7 @@ class event: public G4UserEventAction {
     }
 
     private: RunAction* _run  = nullptr;
-    private: double     _edep = 0.;
+    private: double     _edep = 0.0;
 };
 
 }
