@@ -2,9 +2,7 @@
 
 #include "G4VUserActionInitialization.hh"
 
-namespace B1
-
-{
+namespace B1 {
 
 /// Action initialization class.
 

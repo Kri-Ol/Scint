@@ -6,13 +6,13 @@
 namespace B1
 {
 
-class RunAction;
+class running;
 
 /// Event action class
 
 class event: public G4UserEventAction {
     
-    public: event(RunAction* runAction);
+    public: event(running* runAction);
     public: ~event() override = default;
 
     public: void BeginOfEventAction(const G4Event* event) override {
@@ -25,7 +25,7 @@ class event: public G4UserEventAction {
         _edep += edep;
     }
 
-    private: RunAction* _run  = nullptr;
+    private: running* _run  = nullptr;
     private: double     _edep = 0.0;
 };
 

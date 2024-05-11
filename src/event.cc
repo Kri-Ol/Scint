@@ -1,6 +1,6 @@
 
 #include "event.hh"
-#include "RunAction.hh"
+#include "running.hh"
 
 #include "G4Event.hh"
 #include "G4RunManager.hh"
@@ -8,7 +8,7 @@
 namespace B1
 {
 
-event::event(RunAction* runAction):
+event::event(running* runAction):
     _run(runAction) {
 }
 
