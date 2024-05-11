@@ -1,5 +1,5 @@
 #include "detector.hh"
-#include "ActionInitialization.hh"
+#include "init.hh"
 
 #include "G4RunManagerFactory.hh"
 #include "G4SteppingVerbose.hh"
@@ -40,7 +40,7 @@ func main(int argc,char* argv[]) -> int {
     runManager->SetUserInitialization(physicsList);
 
     // User action initialization
-    runManager->SetUserInitialization(new ActionInitialization());
+    runManager->SetUserInitialization(new init());
 
     // Initialize visualization with the default graphics system
     auto* visManager = new G4VisExecutive(argc, argv);

@@ -1,5 +1,5 @@
 
-#include "ActionInitialization.hh"
+#include "init.hh"
 #include "source.hh"
 #include "RunAction.hh"
 #include "event.hh"
@@ -8,14 +8,12 @@
 namespace B1
 {
 
-void ActionInitialization::BuildForMaster() const
-{
+void init::BuildForMaster() const {
     auto runAction = new RunAction();
     SetUserAction(runAction);
 }
 
-void ActionInitialization::Build() const
-{
+void init::Build() const {
     SetUserAction(new source);
 
     auto runAction = new RunAction;
