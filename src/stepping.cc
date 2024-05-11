@@ -1,5 +1,5 @@
 
-#include "SteppingAction.hh"
+#include "stepping.hh"
 #include "event.hh"
 #include "detector.hh"
 
@@ -11,12 +11,12 @@
 namespace B1
 {
 
-SteppingAction::SteppingAction(event* eventAction):
+stepping::stepping(event* eventAction):
     _event_action(eventAction) {
 
 }
 
-void SteppingAction::UserSteppingAction(const G4Step* step) {
+void stepping::UserSteppingAction(const G4Step* step) {
     if (!_scoring_volume) { // 
         const auto detConstruction = static_cast<const detector*>(G4RunManager::GetRunManager()->GetUserDetectorConstruction());
         _scoring_volume = detConstruction->GetScoringVolume();
@@ -30,8 +30,8 @@ void SteppingAction::UserSteppingAction(const G4Step* step) {
         return;
 
     // collect energy deposited in this step
-    double edepStep = step->GetTotalEnergyDeposit();
-    _event_action->AddEdep(edepStep);
+    double edep_step = step->GetTotalEnergyDeposit();
+    _event_action->AddEdep(edep_step);
 }
 
 }

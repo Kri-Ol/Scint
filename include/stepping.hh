@@ -12,10 +12,10 @@ class event;
 
 /// Stepping action class
 
-class SteppingAction : public G4UserSteppingAction
+class stepping : public G4UserSteppingAction
 {
-    public: SteppingAction(event* eventAction);
-    public: ~SteppingAction() override = default;
+    public: stepping(event* eventAction);
+    public: ~stepping() override = default;
 
     public: void UserSteppingAction(const G4Step*) override;
 

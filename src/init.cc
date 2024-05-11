@@ -3,10 +3,9 @@
 #include "source.hh"
 #include "RunAction.hh"
 #include "event.hh"
-#include "SteppingAction.hh"
+#include "stepping.hh"
 
-namespace B1
-{
+namespace B1 {
 
 void init::BuildForMaster() const {
     auto runAction = new RunAction();
@@ -22,7 +21,7 @@ void init::Build() const {
     auto evt = new event(runAction);
     SetUserAction(evt);
 
-    SetUserAction(new SteppingAction(evt));
+    SetUserAction(new stepping(evt));
 }
 
 }
